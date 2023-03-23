@@ -1,12 +1,13 @@
-package com.chess.entity.piece;
+package com.chess.piece;
 
-import com.chess.entity.Color;
+import com.chess.enums.Color;
 import com.chess.entity.Coordinates;
+import com.chess.entity.CoordinatesShift;
 
 import java.util.Set;
 
-public class Bishop extends Piece{
-    public Bishop(Color color, Coordinates coordinates) {
+public class King extends Piece{
+    public King(Color color, Coordinates coordinates) {
         super(color, coordinates);
     }
 

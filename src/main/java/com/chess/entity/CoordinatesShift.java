@@ -1,4 +1,4 @@
-package com.chess.entity.piece;
+package com.chess.entity;
 
 public class CoordinatesShift {
     public final int horizontalShift;

@@ -1,6 +1,9 @@
-package com.chess.entity;
+package com.chess.board;
 
-import com.chess.entity.piece.*;
+import com.chess.enums.Color;
+import com.chess.entity.Coordinates;
+import com.chess.enums.Horizontal;
+import com.chess.piece.*;
 
 import java.util.HashMap;
 
@@ -11,7 +14,15 @@ public class Board {
         piece.coordinates = coordinates;
         pieces.put(coordinates, piece);
     }
+    public void removePiece(Coordinates coordinates){
+        pieces.remove(coordinates);
 
+    }
+    public void movePiece(Coordinates from,Coordinates to){
+        Piece piece=getPiece(from);
+        removePiece(from);
+        setPieces(piece,to);
+    }
     public void setupDefaultPeacesPositions() {
         //set pawn
         for (Horizontal horizontal : Horizontal.values()) {

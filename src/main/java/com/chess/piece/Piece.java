@@ -1,8 +1,9 @@
-package com.chess.entity.piece;
+package com.chess.piece;
 
-import com.chess.entity.Board;
-import com.chess.entity.Color;
+import com.chess.board.Board;
+import com.chess.enums.Color;
 import com.chess.entity.Coordinates;
+import com.chess.entity.CoordinatesShift;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +35,7 @@ public abstract class Piece {
         return result;
     }
 
-    private boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
+    protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
         return board.isSquareEmpty(coordinates) || board.getPiece(coordinates).color != color;
 
     }
