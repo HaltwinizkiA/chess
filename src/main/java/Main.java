@@ -20,7 +20,7 @@ public class Main {
 //        Game game=new Game(board);
 //        game.gameLoop();
         BoardFactory boardFactory=new BoardFactory();
-        Board board=boardFactory.fromFen("8/8/1p3P2/8/3B4/8/8/8 w - - 0 1");
+        Board board=boardFactory.fromFen("8/2PB4/8/8/1P1R2p1/p7/8/P2N4 w - - 0 1");
         BoardConsoleRenderer boardConsoleRenderer=new BoardConsoleRenderer();
 //        boardConsoleRenderer.render(board);
         Game game=new Game(board);

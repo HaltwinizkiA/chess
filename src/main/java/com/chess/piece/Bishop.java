@@ -6,7 +6,6 @@ import com.chess.entity.Coordinates;
 import com.chess.entity.CoordinatesShift;
 import com.chess.enums.Color;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +20,7 @@ public class Bishop extends Piece {
         boolean result=super.isSquareAvailableForMove(coordinates, board);
         if (result){
             //check pieces
-            List<Coordinates> checkCoordinate=BoardUtils.getDiagonalCoordinates(this.coordinates,coordinates);
+            List<Coordinates> checkCoordinate=BoardUtils.getDiagonalPermittedCoordinates(this.coordinates,coordinates);
             for (Coordinates c:checkCoordinate){
                 if (!board.isSquareEmpty(c)){
                     return false;

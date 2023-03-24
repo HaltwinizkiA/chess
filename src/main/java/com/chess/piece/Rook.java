@@ -1,9 +1,13 @@
 package com.chess.piece;
 
+import com.chess.BoardUtils;
+import com.chess.board.Board;
 import com.chess.enums.Color;
 import com.chess.entity.Coordinates;
 import com.chess.entity.CoordinatesShift;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Rook extends Piece{
@@ -12,7 +16,39 @@ public class Rook extends Piece{
     }
 
     @Override
+    protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
+        boolean result=super.isSquareAvailableForMove(coordinates, board);
+        if (result){
+            //check pieces
+            List<Coordinates> checkCoordinate;
+            if (this.coordinates.horizontal==coordinates.horizontal){
+                checkCoordinate= BoardUtils.getVerticalPermittedCoordinates(this.coordinates,coordinates);
+
+            }else {
+                checkCoordinate= BoardUtils.getHorizontalPermittedCoordinates(this.coordinates,coordinates);
+            }
+            for (Coordinates c:checkCoordinate){
+                if (!board.isSquareEmpty(c)){
+                    return false;
+                }
+            }
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
     protected Set<CoordinatesShift> getPieceMoves() {
-        return null;
+        HashSet<CoordinatesShift> result=new HashSet<>();
+        for (int i = -7; i <= 7; i++) {
+            if (i == 0) continue;
+            //left to right
+            result.add(new CoordinatesShift(i, 0));
+            //right to left
+            result.add(new CoordinatesShift(0, i));
+        }
+
+        return result;
     }
 }
