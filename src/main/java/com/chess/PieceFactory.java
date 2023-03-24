@@ -1,6 +1,6 @@
 package com.chess;
 
-import com.chess.entity.Coordinates;
+import com.chess.piece.Coordinates;
 import com.chess.enums.Color;
 import com.chess.piece.*;
 

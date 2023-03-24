@@ -1,10 +1,8 @@
 package com.chess;
 
 import com.chess.board.Board;
-import com.chess.entity.Coordinates;
-import com.chess.enums.Color;
+import com.chess.piece.Coordinates;
 import com.chess.enums.Horizontal;
-import com.chess.piece.Pawn;
 
 public class BoardFactory {
     private PieceFactory pieceFactory=new PieceFactory();

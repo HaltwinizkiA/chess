@@ -3,6 +3,7 @@ package com.chess.entity;
 import com.chess.board.Board;
 import com.chess.enums.Color;
 import com.chess.enums.Horizontal;
+import com.chess.piece.Coordinates;
 import com.chess.piece.Piece;
 
 import java.util.Scanner;
@@ -15,11 +16,14 @@ public class InputCoordinates {
         while (true) {
             System.out.println("Please enter coordinates example( a1 )");
             String line = scanner.nextLine();
+
+            if (line.length() != 2) {
+                System.out.println("Invalid format");
+                continue;
+            }
             char horizontalChar = line.charAt(0);
             char verticalChar = line.charAt(1);
-            if (line.length() != 2 &&
-                    Character.isLetter(horizontalChar) &&
-                    Character.isDigit(verticalChar)) {
+            if (!Character.isLetter(horizontalChar) && !Character.isDigit(verticalChar)) {
                 System.out.println("Invalid format");
                 continue;
             }
@@ -33,18 +37,20 @@ public class InputCoordinates {
 
         }
     }
-    public Coordinates inputAvailableSquare(Set<Coordinates> coordinates){
-        while (true){
+
+    public Coordinates inputAvailableSquare(Set<Coordinates> coordinates) {
+        while (true) {
             System.out.println(" enter Place");
-            Coordinates input=input();
-            if(!coordinates.contains(input)){
+            Coordinates input = input();
+            if (!coordinates.contains(input)) {
                 System.out.println("Wrong place to move");
             }
-            return input();
+            return input;
         }
 
 
     }
+
     public Coordinates inputPieceCoordinatesForColor(Color color, Board board) {
         while (true) {
             System.out.println("Entry coordinates for a piece to move");

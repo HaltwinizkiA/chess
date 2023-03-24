@@ -1,5 +1,6 @@
-package com.chess.entity;
+package com.chess.piece;
 
+import com.chess.entity.CoordinatesShift;
 import com.chess.enums.Horizontal;
 
 public class Coordinates {

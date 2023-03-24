@@ -1,16 +1,11 @@
 import com.chess.BoardFactory;
 import com.chess.board.Board;
 import com.chess.board.BoardConsoleRenderer;
-import com.chess.entity.Coordinates;
-import com.chess.entity.Game;
-import com.chess.enums.Horizontal;
-import com.chess.piece.Piece;
-
-import java.util.Set;
+import com.chess.Game;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //
 //        =new Board();
 //        board.setupDefaultPeacesPositions();
@@ -19,12 +14,12 @@ public class Main {
 //
 //        Game game=new Game(board);
 //        game.gameLoop();
-        BoardFactory boardFactory=new BoardFactory();
-        Board board=boardFactory.fromFen("8/2PB4/8/8/1P1R2p1/p7/8/P2N4 w - - 0 1");
-        BoardConsoleRenderer boardConsoleRenderer=new BoardConsoleRenderer();
+        BoardFactory boardFactory = new BoardFactory();
+        Board board = boardFactory.fromFen("8/2PB4/5R2/8/1P1Q2p1/p7/5n2/P2N4 w - - 0 1");
+        BoardConsoleRenderer boardConsoleRenderer = new BoardConsoleRenderer();
 //        boardConsoleRenderer.render(board);
-        Game game=new Game(board);
+        Game game = new Game(board);
         game.gameLoop();
-        int a=123;
+        int a = 123;
     }
 }

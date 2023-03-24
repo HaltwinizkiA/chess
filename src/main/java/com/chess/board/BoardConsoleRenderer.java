@@ -1,7 +1,7 @@
 package com.chess.board;
 
 import com.chess.enums.Color;
-import com.chess.entity.Coordinates;
+import com.chess.piece.Coordinates;
 import com.chess.enums.Horizontal;
 import com.chess.piece.Piece;
 
@@ -15,7 +15,7 @@ public class BoardConsoleRenderer {
     public static final String ANSI_BLACK_PIECE_COLOR = "\u001B[30m";
     public static final String ANSI_WHITE_SQUARE_BACKGROUND = "\u001B[47m";
     public static final String ANSI_BLACK_SQUARE_BACKGROUND = "\u001B[0;100m";
-    public static final String ANSI_HIGHLIGHTED_SQUARE_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_HIGHLIGHTED_SQUARE_BACKGROUND = "\u001B[106m";
 
     public void render(Board board,Piece pieceToMove) {
         Set<Coordinates> availablePieceMoves=emptySet();

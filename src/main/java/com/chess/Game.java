@@ -1,8 +1,10 @@
-package com.chess.entity;
+package com.chess;
 
 import com.chess.board.Board;
 import com.chess.board.BoardConsoleRenderer;
+import com.chess.entity.InputCoordinates;
 import com.chess.enums.Color;
+import com.chess.piece.Coordinates;
 import com.chess.piece.Piece;
 
 import java.util.Set;
