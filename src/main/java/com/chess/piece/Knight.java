@@ -1,7 +1,7 @@
 package com.chess.piece;
 
-import com.chess.enums.Color;
 import com.chess.entity.CoordinatesShift;
+import com.chess.enums.Color;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -18,8 +18,9 @@ public class Knight extends Piece {
     protected Set<CoordinatesShift> getPieceMoves() {
 
         return new HashSet<>(Arrays.asList(
-                new CoordinatesShift(1, 2),
-                new CoordinatesShift(2, 1),
+                new CoordinatesShift(-2, 1),
+                new CoordinatesShift(-1, 2),
+
 
                 new CoordinatesShift(2, -1),
                 new CoordinatesShift(1, -2),
@@ -27,10 +28,11 @@ public class Knight extends Piece {
                 new CoordinatesShift(-2, -1),
                 new CoordinatesShift(-1, -2),
 
-                new CoordinatesShift(-2, 1),
-                new CoordinatesShift(-1, 2)
-        ));
+                new CoordinatesShift(1, 2),
+                new CoordinatesShift(2, 1)
 
+
+        ));
 
 
     }

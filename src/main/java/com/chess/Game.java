@@ -4,6 +4,7 @@ import com.chess.board.Board;
 import com.chess.board.BoardConsoleRenderer;
 import com.chess.entity.InputCoordinates;
 import com.chess.enums.Color;
+import com.chess.enums.Horizontal;
 import com.chess.piece.Coordinates;
 import com.chess.piece.Piece;
 

@@ -2,6 +2,12 @@ import com.chess.BoardFactory;
 import com.chess.board.Board;
 import com.chess.board.BoardConsoleRenderer;
 import com.chess.Game;
+import com.chess.enums.Horizontal;
+import com.chess.piece.Coordinates;
+import com.chess.piece.King;
+import com.chess.piece.Piece;
+
+import java.util.Set;
 
 public class Main {
 
@@ -15,11 +21,12 @@ public class Main {
 //        Game game=new Game(board);
 //        game.gameLoop();
         BoardFactory boardFactory = new BoardFactory();
-        Board board = boardFactory.fromFen("8/2PB4/5R2/8/1P1Q2p1/p7/5n2/P2N4 w - - 0 1");
+        Board board = boardFactory.fromFen("8/8/8/1bR5/8/4K3/8/8 w - - 0 1");
         BoardConsoleRenderer boardConsoleRenderer = new BoardConsoleRenderer();
 //        boardConsoleRenderer.render(board);
         Game game = new Game(board);
         game.gameLoop();
+
         int a = 123;
     }
 }

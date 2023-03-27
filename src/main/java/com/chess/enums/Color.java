@@ -2,5 +2,10 @@ package com.chess.enums;
 
 public enum Color {
     WHITE,
-    BlACK,
+    BlACK;
+
+    public Color change() {
+
+        return this == WHITE ? BlACK : WHITE;
+    }
 }

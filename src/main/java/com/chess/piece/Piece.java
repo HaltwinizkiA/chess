@@ -1,8 +1,8 @@
 package com.chess.piece;
 
 import com.chess.board.Board;
-import com.chess.enums.Color;
 import com.chess.entity.CoordinatesShift;
+import com.chess.enums.Color;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,7 +35,33 @@ public abstract class Piece {
     }
 
     protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
+
         return board.isSquareEmpty(coordinates) || board.getPiece(coordinates).color != color;
 
+    }
+
+    public Set<Coordinates> getSquaresInBattle(Board board) {
+        Set<CoordinatesShift> piecesToBattle = getPieceBattle();
+        Set<Coordinates> squareInBattle = new HashSet<>();
+        for (CoordinatesShift pieceToBattle : piecesToBattle) {
+            if (coordinates.canShift(pieceToBattle)) {
+                Coordinates shiftedCoordinates = coordinates.shift(pieceToBattle);
+
+            if (checkPieceOnTheWay(shiftedCoordinates, board)) {
+                squareInBattle.add(shiftedCoordinates);
+            }
+            }
+
+        }
+        return squareInBattle;
+    }
+
+    protected boolean checkPieceOnTheWay(Coordinates coordinates, Board board) {
+        return true;
+
+    }
+
+    protected Set<CoordinatesShift> getPieceBattle() {
+        return getPieceMoves();
     }
 }

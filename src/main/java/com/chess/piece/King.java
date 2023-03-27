@@ -1,17 +1,46 @@
 package com.chess.piece;
 
-import com.chess.enums.Color;
+import com.chess.board.Board;
 import com.chess.entity.CoordinatesShift;
+import com.chess.enums.Color;
 
+import java.util.HashSet;
 import java.util.Set;
 
-public class King extends Piece{
+public class King extends Piece {
     public King(Color color, Coordinates coordinates) {
         super(color, coordinates);
     }
 
     @Override
     protected Set<CoordinatesShift> getPieceMoves() {
-        return null;
+        HashSet<CoordinatesShift> result = new HashSet<>();
+
+        for (int horizontalShift = -1; horizontalShift <= 1; horizontalShift++) {
+            for (int verticalShift = -1; verticalShift <= 1; verticalShift++) {
+                if (horizontalShift == 0 && verticalShift == 0) {
+                    continue;
+                }
+                result.add(new CoordinatesShift(horizontalShift, verticalShift));
+
+            }
+
+
+        }
+        return result;
+
+    }
+
+    @Override
+    protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
+        boolean result=super.isSquareAvailableForMove(coordinates, board);
+        if (result){
+          return !board.isSquareInBattleByColor(coordinates,color.change());
+
+        }
+
+        return false;
     }
 }
+
+
