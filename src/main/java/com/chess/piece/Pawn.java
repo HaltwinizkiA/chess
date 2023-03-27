@@ -38,12 +38,26 @@ public class Pawn extends Piece {
         return result;
     }
 
+//    @Override
+//    protected Set<CoordinatesShift> getPieceBattle() {
+//        HashSet<CoordinatesShift> result = new HashSet<>();
+//        if (color==Color.WHITE){
+//            result.add(new CoordinatesShift(1, 1));
+//            result.add(new CoordinatesShift(-1, 1));
+//        }else {
+//            result.add(new CoordinatesShift(1, -1));
+//            result.add(new CoordinatesShift(-1, -1));
+//        }
+//        return result;
+//    }
+
     @Override
     protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
         if (this.coordinates.horizontal == coordinates.horizontal) {
             //if lie on 2 or 7 vertical and have a piece in front of
             if (this.coordinates.vertical == 2 || this.coordinates.vertical == 7) {
-                if (board.getPiece(new Coordinates(this.coordinates.horizontal, this.coordinates.vertical + 1)) != null || board.getPiece(new Coordinates(this.coordinates.horizontal, this.coordinates.vertical - 1)) != null) {
+                if (board.getPiece(new Coordinates(this.coordinates.horizontal, this.coordinates.vertical + 1)) != null &&this.color==Color.WHITE
+                        ||board.getPiece(new Coordinates(this.coordinates.horizontal, this.coordinates.vertical - 1)) != null &&this.color==Color.BlACK) {
                     return false;
                 }
             }

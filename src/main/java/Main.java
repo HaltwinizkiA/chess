@@ -21,9 +21,9 @@ public class Main {
 //        Game game=new Game(board);
 //        game.gameLoop();
         BoardFactory boardFactory = new BoardFactory();
-        Board board = boardFactory.fromFen("8/8/8/1bR5/8/4K3/8/8 w - - 0 1");
+        Board board = boardFactory.fromFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         BoardConsoleRenderer boardConsoleRenderer = new BoardConsoleRenderer();
-//        boardConsoleRenderer.render(board);
+//      boardConsoleRenderer.render(board);
         Game game = new Game(board);
         game.gameLoop();
 
