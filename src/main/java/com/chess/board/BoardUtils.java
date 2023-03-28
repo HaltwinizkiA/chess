@@ -1,4 +1,4 @@
-package com.chess;
+package com.chess.board;
 
 import com.chess.piece.Coordinates;
 import com.chess.enums.Horizontal;

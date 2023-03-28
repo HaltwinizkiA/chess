@@ -1,7 +1,7 @@
 package com.chess.piece;
 
 import com.chess.enums.Color;
-import com.chess.entity.CoordinatesShift;
+import com.chess.coordinate.CoordinatesShift;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,6 +1,6 @@
 package com.chess.piece;
 
-import com.chess.entity.CoordinatesShift;
+import com.chess.coordinate.CoordinatesShift;
 import com.chess.enums.Color;
 
 import java.util.Arrays;

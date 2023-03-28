@@ -1,6 +1,7 @@
-package com.chess;
+package com.chess.board;
 
-import com.chess.board.Board;
+import com.chess.piece.PieceFactory;
+import com.chess.coordinate.Move;
 import com.chess.piece.Coordinates;
 import com.chess.enums.Horizontal;
 
@@ -9,7 +10,7 @@ public class BoardFactory {
     public Board fromFen(String fen) {
         // standart FEN - rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1;
         //random FEN - rnbqkbnr/p2p1ppp/8/p2p2pN/2R1P1P1/1P2Q3/P2PPP1P/R1B1KBN1 w Qkq - 0 1
-        Board board=new Board();
+        Board board=new Board(fen);
         String[] parts = fen.split(" ");
         String piecePosition=parts[0];
         String[] rows=piecePosition.split("/");
@@ -33,5 +34,11 @@ public class BoardFactory {
         }
         return board;
     }
-
+    public Board copy(Board board){
+        Board copy=fromFen(board.startFen);
+        for (Move move:board.getMoveHistory()){
+            copy.movePiece(move);
+        }
+        return copy;
+    }
 }

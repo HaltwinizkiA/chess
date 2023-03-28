@@ -1,7 +1,7 @@
 package com.chess.piece;
 
 import com.chess.board.Board;
-import com.chess.entity.CoordinatesShift;
+import com.chess.coordinate.CoordinatesShift;
 import com.chess.enums.Color;
 
 import java.util.HashSet;
@@ -11,7 +11,8 @@ public class Pawn extends Piece {
     public Pawn(Color color, Coordinates coordinates) {
         super(color, coordinates);
     }
-//todo Realisierung metamorphose in alle piece
+    //todo Realisierung metamorphose in alle piece in class PieceFactory
+    //todo diagonal walking
     @Override
     protected Set<CoordinatesShift> getPieceMoves() {
         HashSet<CoordinatesShift> result = new HashSet<>();

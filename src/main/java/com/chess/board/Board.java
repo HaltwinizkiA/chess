@@ -1,5 +1,6 @@
 package com.chess.board;
 
+import com.chess.coordinate.Move;
 import com.chess.enums.Color;
 import com.chess.enums.Horizontal;
 import com.chess.piece.*;
@@ -10,10 +11,21 @@ import java.util.List;
 import java.util.Set;
 
 public class Board {
+
+    public final String startFen;
+    private final List<Move> moveHistory = new ArrayList<>();
     HashMap<Coordinates, Piece> pieces = new HashMap<Coordinates, Piece>();
+
+    public Board(String startFen) {
+        this.startFen = startFen;
+    }
 
     public static boolean isSquareDark(Coordinates coordinates) {
         return (((coordinates.horizontal.ordinal() + 1) + coordinates.vertical) % 2) == 0;
+    }
+
+    public List<Move> getMoveHistory() {
+        return moveHistory;
     }
 
     public void setPieces(Piece piece, Coordinates coordinates) {
@@ -26,10 +38,11 @@ public class Board {
 
     }
 
-    public void movePiece(Coordinates from, Coordinates to) {
-        Piece piece = getPiece(from);
-        removePiece(from);
-        setPieces(piece, to);
+    public void movePiece(Move move) {
+        Piece piece = getPiece(move.from);
+        removePiece(move.from);
+        setPieces(piece, move.to);
+        moveHistory.add(move);
     }
 
     public void setupDefaultPeacesPositions() {
@@ -85,7 +98,7 @@ public class Board {
 
     }
 
-    private List<Piece> getPiecesByColor(Color color) {
+    public List<Piece> getPiecesByColor(Color color) {
         List<Piece> result = new ArrayList<>();
         for (Piece piece : pieces.values()) {
             if (piece.color == color) {

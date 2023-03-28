@@ -1,6 +1,6 @@
 package com.chess.piece;
 
-import com.chess.BoardUtils;
+import com.chess.board.BoardUtils;
 import com.chess.board.Board;
 import com.chess.enums.Color;
 

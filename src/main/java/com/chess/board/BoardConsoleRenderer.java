@@ -84,6 +84,8 @@ public class BoardConsoleRenderer {
         return result;
     }
 
+
+
     private String getSpringForEmptySquare(Coordinates coordinates,boolean isHighlight) {
         return colorizeSprite("   ", Color.BlACK, Board.isSquareDark(coordinates),isHighlight);
     }

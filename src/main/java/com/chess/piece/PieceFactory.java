@@ -1,11 +1,11 @@
-package com.chess;
+package com.chess.piece;
 
 import com.chess.piece.Coordinates;
 import com.chess.enums.Color;
 import com.chess.piece.*;
 
 public class PieceFactory {
-    Piece fromFenChar(char fenChar, Coordinates coordinates) {
+    public Piece fromFenChar(char fenChar, Coordinates coordinates) {
         switch (fenChar) {
 
             case 'p':
@@ -41,5 +41,6 @@ public class PieceFactory {
                 throw new RuntimeException("Unknown FEN char");
             }
         }
+
     }
 

@@ -1,7 +1,7 @@
 package com.chess.piece;
 
 import com.chess.board.Board;
-import com.chess.entity.CoordinatesShift;
+import com.chess.coordinate.CoordinatesShift;
 import com.chess.enums.Color;
 
 import java.util.HashSet;
@@ -10,7 +10,7 @@ import java.util.Set;
 public abstract class Piece {
     public final Color color;
     public Coordinates coordinates;
-    Set<Coordinates> getAvailableMove;
+    Set<Coordinates> AvailableMove;
 
     public Piece(Color color, Coordinates coordinates) {
         this.color = color;

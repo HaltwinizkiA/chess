@@ -1,9 +1,12 @@
-package com.chess.entity;
+package com.chess.coordinate;
 
+import com.chess.board.BoardFactory;
 import com.chess.board.Board;
+import com.chess.board.BoardConsoleRenderer;
 import com.chess.enums.Color;
 import com.chess.enums.Horizontal;
 import com.chess.piece.Coordinates;
+import com.chess.piece.King;
 import com.chess.piece.Piece;
 
 import java.util.Scanner;
@@ -38,12 +41,45 @@ public class InputCoordinates {
         }
     }
 
+    public Move InputMove(Board board, Color color, BoardConsoleRenderer renderer) {
+        while (true) {
+            Coordinates sourceCoordinates = inputPieceCoordinatesForColor(color, board);
+            Piece piece = board.getPiece(sourceCoordinates);
+            Set<Coordinates> availableMove = piece.getGetAvailableMove(board);
+
+            renderer.render(board, piece);
+            Coordinates target = inputAvailableSquare(availableMove);
+
+            Move move = new Move(sourceCoordinates, target);
+            piece.getGetAvailableMove(board);
+
+            if (checkIfKingAfterMoveIsUnderAttack(board, move, color)) {
+                System.out.println("Your King is under Attack");
+                continue;
+            }
+            return move;
+        }
+
+
+    }
+
+    private boolean checkIfKingAfterMoveIsUnderAttack(Board board, Move move, Color color) {
+        Board copy = new BoardFactory().copy(board);
+        copy.movePiece(move);
+        // King must to exists on board
+        Piece king=copy.getPiecesByColor(color).stream().filter(piece -> piece instanceof King).findFirst().get();
+       return copy.isSquareInBattleByColor(king.coordinates,color.change());
+
+    }
+
     public Coordinates inputAvailableSquare(Set<Coordinates> coordinates) {
         while (true) {
             System.out.println(" enter Place");
             Coordinates input = input();
+
             if (!coordinates.contains(input)) {
                 System.out.println("Wrong place to move");
+                continue;
             }
             return input;
         }
@@ -68,7 +104,9 @@ public class InputCoordinates {
             Set<Coordinates> coordinatesSet = piece.getGetAvailableMove(board);
             if (coordinatesSet.size() == 0) {
                 System.out.println("This Piece can't move-because it block");
+                continue;
             }
+
             return coordinates;
 
         }
