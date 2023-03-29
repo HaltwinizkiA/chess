@@ -11,7 +11,8 @@ public class Rook extends BigRangePiece{
         super(color, coordinates);
     }
 
-
+    public Rook(Color color, Coordinates coordinates,String FENSymbol) {
+        super(color, coordinates,FENSymbol);}
 
     @Override
     protected Set<CoordinatesShift> getPieceMoves() {

@@ -42,6 +42,7 @@ public class InputCoordinates {
     }
 
     public Move InputMove(Board board, Color color, BoardConsoleRenderer renderer) {
+
         while (true) {
             Coordinates sourceCoordinates = inputPieceCoordinatesForColor(color, board);
             Piece piece = board.getPiece(sourceCoordinates);
@@ -65,12 +66,13 @@ public class InputCoordinates {
 
     private boolean checkIfKingAfterMoveIsUnderAttack(Board board, Move move, Color color) {
         Board copy = new BoardFactory().copy(board);
-        copy.movePiece(move);
+        copy.movePiece(move,false);
         // King must to exists on board
         Piece king=copy.getPiecesByColor(color).stream().filter(piece -> piece instanceof King).findFirst().get();
        return copy.isSquareInBattleByColor(king.coordinates,color.change());
 
     }
+
 
     public Coordinates inputAvailableSquare(Set<Coordinates> coordinates) {
         while (true) {

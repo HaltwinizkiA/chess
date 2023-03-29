@@ -10,7 +10,9 @@ public abstract class BigRangePiece extends Piece {
     public BigRangePiece(Color color, Coordinates coordinates) {
         super(color, coordinates);
     }
-
+    public BigRangePiece(Color color, Coordinates coordinates,String FENSymbol) {
+        super(color, coordinates,FENSymbol);
+    }
     @Override
     protected boolean checkPieceOnTheWay(Coordinates coordinates, Board board) {
         //check if there is a piece on the way

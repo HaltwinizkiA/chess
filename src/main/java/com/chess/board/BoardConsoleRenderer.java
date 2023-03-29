@@ -1,8 +1,8 @@
 package com.chess.board;
 
 import com.chess.enums.Color;
-import com.chess.piece.Coordinates;
 import com.chess.enums.Horizontal;
+import com.chess.piece.Coordinates;
 import com.chess.piece.Piece;
 
 import java.util.Set;
@@ -17,34 +17,36 @@ public class BoardConsoleRenderer {
     public static final String ANSI_BLACK_SQUARE_BACKGROUND = "\u001B[0;100m";
     public static final String ANSI_HIGHLIGHTED_SQUARE_BACKGROUND = "\u001B[106m";
 
-    public void render(Board board,Piece pieceToMove) {
-        Set<Coordinates> availablePieceMoves=emptySet();
-        if (pieceToMove!=null){
-            availablePieceMoves=pieceToMove.getGetAvailableMove(board);
+    public void render(Board board, Piece pieceToMove) {
+        Set<Coordinates> availablePieceMoves = emptySet();
+        if (pieceToMove != null) {
+            availablePieceMoves = pieceToMove.getGetAvailableMove(board);
         }
         for (int vertical = 8; vertical >= 1; vertical--) {
             String line = "";
 
             for (Horizontal horizontal : Horizontal.values()) {
                 Coordinates coordinates = new Coordinates(horizontal, vertical);
-                boolean isHighlight=availablePieceMoves.contains(coordinates);
+                boolean isHighlight = availablePieceMoves.contains(coordinates);
 
                 if (board.isSquareEmpty(coordinates)) {
-                    line += getSpringForEmptySquare(coordinates,isHighlight);
+                    line += getSpringForEmptySquare(coordinates, isHighlight);
                 } else {
-                    line += getPiecesSprite(board.getPiece(coordinates),isHighlight);}
+                    line += getPiecesSprite(board.getPiece(coordinates), isHighlight);
+                }
 
             }
             line += ANSI_RESET;
             System.out.println(line);
         }
     }
-    public void render(Board board){
-        render(board,null);
+
+    public void render(Board board) {
+        render(board, null);
     }
 
-    private String getPiecesSprite(Piece piece,boolean isHighlight) {
-        return colorizeSprite(" " + selectUnicodeSpriteForPiece(piece) + " ", piece.color, Board.isSquareDark(piece.coordinates),isHighlight);
+    private String getPiecesSprite(Piece piece, boolean isHighlight) {
+        return colorizeSprite(" " + selectUnicodeSpriteForPiece(piece) + " ", piece.color, Board.isSquareDark(piece.coordinates), isHighlight);
     }
 
     private String selectUnicodeSpriteForPiece(Piece piece) {
@@ -65,10 +67,10 @@ public class BoardConsoleRenderer {
         return "";
     }
 
-    private String colorizeSprite(String sprite, Color pieceColor, boolean isSquareDark,boolean isHghLighted) {
+    private String colorizeSprite(String sprite, Color pieceColor, boolean isSquareDark, boolean isHghLighted) {
         //format =background color+ font color + text  //watch-(ansi colors)
         String result = sprite;
-        if (isHghLighted){
+        if (isHghLighted) {
             result = ANSI_HIGHLIGHTED_SQUARE_BACKGROUND + result;
         }
         if (pieceColor == Color.WHITE) {
@@ -84,10 +86,8 @@ public class BoardConsoleRenderer {
         return result;
     }
 
-
-
-    private String getSpringForEmptySquare(Coordinates coordinates,boolean isHighlight) {
-        return colorizeSprite("   ", Color.BlACK, Board.isSquareDark(coordinates),isHighlight);
+    private String getSpringForEmptySquare(Coordinates coordinates, boolean isHighlight) {
+        return colorizeSprite("   ", Color.BlACK, Board.isSquareDark(coordinates), isHighlight);
     }
 
 }

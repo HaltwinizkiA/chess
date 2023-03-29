@@ -8,11 +8,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Pawn extends Piece {
+    //metamorphose in PieceFactory -pawnMetamorphose()
+
     public Pawn(Color color, Coordinates coordinates) {
         super(color, coordinates);
     }
-    //todo Realisierung metamorphose in alle piece in class PieceFactory
-    //todo diagonal walking
+    public Pawn(Color color, Coordinates coordinates,String fenSymbol) {
+        super(color, coordinates,fenSymbol);
+    }
+    //todo diagonal walking(Taking on the pass)
     @Override
     protected Set<CoordinatesShift> getPieceMoves() {
         HashSet<CoordinatesShift> result = new HashSet<>();
@@ -39,18 +43,18 @@ public class Pawn extends Piece {
         return result;
     }
 
-//    @Override
-//    protected Set<CoordinatesShift> getPieceBattle() {
-//        HashSet<CoordinatesShift> result = new HashSet<>();
-//        if (color==Color.WHITE){
-//            result.add(new CoordinatesShift(1, 1));
-//            result.add(new CoordinatesShift(-1, 1));
-//        }else {
-//            result.add(new CoordinatesShift(1, -1));
-//            result.add(new CoordinatesShift(-1, -1));
-//        }
-//        return result;
-//    }
+    @Override
+    protected Set<CoordinatesShift> getPieceBattle() {
+        HashSet<CoordinatesShift> result = new HashSet<>();
+        if (color==Color.WHITE){
+            result.add(new CoordinatesShift(1, 1));
+            result.add(new CoordinatesShift(-1, 1));
+        }else {
+            result.add(new CoordinatesShift(1, -1));
+            result.add(new CoordinatesShift(-1, -1));
+        }
+        return result;
+    }
 
     @Override
     protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {

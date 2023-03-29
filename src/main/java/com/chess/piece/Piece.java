@@ -11,10 +11,23 @@ public abstract class Piece {
     public final Color color;
     public Coordinates coordinates;
     Set<Coordinates> AvailableMove;
+    private String FENSymbol;
+
+    public String getFENSymbol() {
+        return FENSymbol;
+    }
 
     public Piece(Color color, Coordinates coordinates) {
         this.color = color;
         this.coordinates = coordinates;
+        if (this.color==Color.WHITE){
+            this.FENSymbol=this.FENSymbol.toUpperCase();
+        }else this.FENSymbol=this.FENSymbol.toLowerCase();
+    }
+    public Piece(Color color, Coordinates coordinates,String FENSymbol) {
+        this.color = color;
+        this.coordinates = coordinates;
+        this.FENSymbol=FENSymbol;
     }
 
     protected abstract Set<CoordinatesShift> getPieceMoves();

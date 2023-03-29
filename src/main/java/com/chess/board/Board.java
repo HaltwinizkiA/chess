@@ -24,6 +24,10 @@ public class Board {
         return (((coordinates.horizontal.ordinal() + 1) + coordinates.vertical) % 2) == 0;
     }
 
+    public HashMap<Coordinates, Piece> getPieces() {
+        return pieces;
+    }
+
     public List<Move> getMoveHistory() {
         return moveHistory;
     }
@@ -38,11 +42,22 @@ public class Board {
 
     }
 
-    public void movePiece(Move move) {
+    public void movePiece(Move move, boolean withPawnMetamorphoseCheck) {
         Piece piece = getPiece(move.from);
+        if (checkIsPawnInMetamorphose(piece, move.to) && withPawnMetamorphoseCheck) {
+            piece = new PieceFactory().pawnMetamorphose(piece.color, move.to);
+        }
         removePiece(move.from);
         setPieces(piece, move.to);
         moveHistory.add(move);
+    }
+
+    public boolean checkIsPawnInMetamorphose(Piece piece, Coordinates to) {
+        if (piece.getClass() == Pawn.class) {
+            return piece.color == Color.BlACK && to.vertical == 1 || piece.color == Color.WHITE && to.vertical == 8;
+
+        }
+        return false;
     }
 
     public void setupDefaultPeacesPositions() {

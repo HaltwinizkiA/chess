@@ -12,6 +12,10 @@ public class King extends Piece {
         super(color, coordinates);
     }
 
+    public King(Color color, Coordinates coordinates, String FENSymbol) {
+        super(color, coordinates, FENSymbol);
+    }
+
     @Override
     protected Set<CoordinatesShift> getPieceMoves() {
         HashSet<CoordinatesShift> result = new HashSet<>();
@@ -33,9 +37,9 @@ public class King extends Piece {
 
     @Override
     protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
-        boolean result=super.isSquareAvailableForMove(coordinates, board);
-        if (result){
-          return !board.isSquareInBattleByColor(coordinates,color.change());
+        boolean result = super.isSquareAvailableForMove(coordinates, board);
+        if (result) {
+            return !board.isSquareInBattleByColor(coordinates, color.change());
 
         }
 

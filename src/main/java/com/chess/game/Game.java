@@ -34,12 +34,12 @@ public class Game {
 
             //input
             Move move = inputCoordinates.InputMove(board, toMove, renderer);
-
             //CHECK SHAH (from, to)
             //sout("your king is under Attack)
 
-            //make move
-            board.movePiece(move);
+            //make move check Pawn in Metamorphose
+
+            board.movePiece(move, true);
             //pass move
             toMove = toMove.change();
             gameStatus = defineGameStatus(board, toMove);

@@ -11,6 +11,10 @@ public class Bishop extends BigRangePiece {
         super(color, coordinates);
     }
 
+    public Bishop(Color color, Coordinates coordinates, String FENSymbol) {
+        super(color, coordinates, FENSymbol);
+    }
+
     @Override
     protected Set<CoordinatesShift> getPieceMoves() {
         HashSet<CoordinatesShift> result = new HashSet<>();
