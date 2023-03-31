@@ -16,12 +16,12 @@ public class StaleMateChecker extends GameStatusCheck {
         List<Piece> pieces = board.getPiecesByColor(color);
         for (Piece piece : pieces) {
 
-            Set<Coordinates>  coordinatesSet = piece.getGetAvailableMove(board);
+            Set<Coordinates> coordinatesSet = piece.getGetAvailableMove(board);
             if (coordinatesSet.size() > 0) {
                 return GameStatus.ONGOING;
             }
         }
-         return GameStatus.STALEMATE;
+        return GameStatus.STALEMATE;
 
     }
 }

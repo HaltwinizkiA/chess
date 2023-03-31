@@ -1,6 +1,5 @@
 package com.chess.board;
 
-import com.chess.coordinate.Move;
 import com.chess.enums.Horizontal;
 import com.chess.piece.Coordinates;
 import com.chess.piece.Piece;
@@ -42,6 +41,7 @@ public class BoardFactory {
         for (int i = 8; i > 0; i--) {
             int empty = 0;
             for (int j = 0; j < 8; j++) {
+
                 Piece piece = board.getPieces().get(new Coordinates(Horizontal.values()[j], i));
                 if (piece == null) {
                     empty++;
@@ -63,7 +63,7 @@ public class BoardFactory {
     }
 
     public Board copy(Board board) {
-        String fen=FENGeneration(board);
+        String fen = FENGeneration(board);
         Board copy = fromFen(fen);
         return copy;
     }

@@ -1,8 +1,8 @@
 package com.chess.coordinate;
 
-import com.chess.board.BoardFactory;
 import com.chess.board.Board;
 import com.chess.board.BoardConsoleRenderer;
+import com.chess.board.BoardFactory;
 import com.chess.enums.Color;
 import com.chess.enums.Horizontal;
 import com.chess.piece.Coordinates;
@@ -66,10 +66,10 @@ public class InputCoordinates {
 
     private boolean checkIfKingAfterMoveIsUnderAttack(Board board, Move move, Color color) {
         Board copy = new BoardFactory().copy(board);
-        copy.movePiece(move,false);
+        copy.movePiece(move, false);
         // King must to exists on board
-        Piece king=copy.getPiecesByColor(color).stream().filter(piece -> piece instanceof King).findFirst().get();
-       return copy.isSquareInBattleByColor(king.coordinates,color.change());
+        Piece king = copy.getPiecesByColor(color).stream().filter(piece -> piece instanceof King).findFirst().get();
+        return copy.isSquareInBattleByColor(king.coordinates, color.change());
 
     }
 

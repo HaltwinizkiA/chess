@@ -20,9 +20,7 @@ public class Coordinates {
         int h = horizontal.ordinal() + coordinatesShift.horizontalShift;
         int v = vertical + coordinatesShift.verticalShift;
         if ((h < 0) || (h > 7)) return false;// 0-7 weil Enum
-        if ((v < 1) || (v > 8)) return false;// 1-8
-
-        return true;
+        return (v >= 1) && (v <= 8);// 1-8
     }
 
 

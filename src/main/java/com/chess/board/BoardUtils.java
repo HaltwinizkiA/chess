@@ -12,12 +12,9 @@ public class BoardUtils {
         List<Coordinates> result = new ArrayList<>();
         int horizontalShift = from.horizontal.ordinal() < target.horizontal.ordinal() ? 1 : -1;
         int verticalShift = from.vertical < target.vertical ? 1 : -1;
-        for (
-                int horizontalIndex = from.horizontal.ordinal() + horizontalShift, vertical = from.vertical + verticalShift;
+        for (int horizontalIndex = from.horizontal.ordinal() + horizontalShift, vertical = from.vertical + verticalShift;
 
-                horizontalIndex != target.horizontal.ordinal() && vertical != target.vertical;
-                horizontalIndex += horizontalShift, vertical += verticalShift
-        ) {
+             horizontalIndex != target.horizontal.ordinal() && vertical != target.vertical; horizontalIndex += horizontalShift, vertical += verticalShift) {
             result.add(new Coordinates(Horizontal.values()[horizontalIndex], vertical));
         }
 
@@ -28,11 +25,7 @@ public class BoardUtils {
         //precondition - coordinates lie on the same vertical
         List<Coordinates> result = new ArrayList<>();
         int verticalShift = from.vertical < target.vertical ? 1 : -1;
-        for (
-                int vertical = from.vertical + verticalShift;
-                vertical != target.vertical;
-                vertical += verticalShift
-        ) {
+        for (int vertical = from.vertical + verticalShift; vertical != target.vertical; vertical += verticalShift) {
             result.add(new Coordinates(from.horizontal, vertical));
         }
 
@@ -45,12 +38,9 @@ public class BoardUtils {
         List<Coordinates> result = new ArrayList<>();
         int horizontalShift = from.horizontal.ordinal() < target.horizontal.ordinal() ? 1 : -1;
 
-        for (
-                int horizontalIndex = from.horizontal.ordinal() + horizontalShift;
+        for (int horizontalIndex = from.horizontal.ordinal() + horizontalShift;
 
-                horizontalIndex != target.horizontal.ordinal();
-                horizontalIndex += horizontalShift
-        ) {
+             horizontalIndex != target.horizontal.ordinal(); horizontalIndex += horizontalShift) {
             result.add(new Coordinates(Horizontal.values()[horizontalIndex], from.vertical));
         }
 

@@ -13,21 +13,22 @@ public abstract class Piece {
     Set<Coordinates> AvailableMove;
     private String FENSymbol;
 
-    public String getFENSymbol() {
-        return FENSymbol;
-    }
-
     public Piece(Color color, Coordinates coordinates) {
         this.color = color;
         this.coordinates = coordinates;
-        if (this.color==Color.WHITE){
-            this.FENSymbol=this.FENSymbol.toUpperCase();
-        }else this.FENSymbol=this.FENSymbol.toLowerCase();
+        if (this.color == Color.WHITE) {
+            this.FENSymbol = this.FENSymbol.toUpperCase();
+        } else this.FENSymbol = this.FENSymbol.toLowerCase();
     }
-    public Piece(Color color, Coordinates coordinates,String FENSymbol) {
+
+    public Piece(Color color, Coordinates coordinates, String FENSymbol) {
         this.color = color;
         this.coordinates = coordinates;
-        this.FENSymbol=FENSymbol;
+        this.FENSymbol = FENSymbol;
+    }
+
+    public String getFENSymbol() {
+        return FENSymbol;
     }
 
     protected abstract Set<CoordinatesShift> getPieceMoves();
@@ -60,9 +61,9 @@ public abstract class Piece {
             if (coordinates.canShift(pieceToBattle)) {
                 Coordinates shiftedCoordinates = coordinates.shift(pieceToBattle);
 
-            if (checkPieceOnTheWay(shiftedCoordinates, board)) {
-                squareInBattle.add(shiftedCoordinates);
-            }
+                if (checkPieceOnTheWay(shiftedCoordinates, board)) {
+                    squareInBattle.add(shiftedCoordinates);
+                }
             }
 
         }

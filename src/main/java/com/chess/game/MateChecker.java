@@ -26,7 +26,7 @@ public class MateChecker extends GameStatusCheck {
             Set<Coordinates> availableMove = piece.getGetAvailableMove(board);
             for (Coordinates coordinates : availableMove) {
                 Board clone = new BoardFactory().copy(board);
-                clone.movePiece(new Move(piece.coordinates, coordinates),false);
+                clone.movePiece(new Move(piece.coordinates, coordinates), false);
                 Piece kingClone = clone.getPiecesByColor(color).stream().filter(p -> p instanceof King).findFirst().get();
 
                 if (!clone.isSquareInBattleByColor(kingClone.coordinates, color.change())) {

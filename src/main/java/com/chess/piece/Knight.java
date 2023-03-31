@@ -24,7 +24,6 @@ public class Knight extends Piece {
 
         return new HashSet<>(Arrays.asList(new CoordinatesShift(-2, 1), new CoordinatesShift(-1, 2),
 
-
                 new CoordinatesShift(2, -1), new CoordinatesShift(1, -2),
 
                 new CoordinatesShift(-2, -1), new CoordinatesShift(-1, -2),

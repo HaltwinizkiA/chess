@@ -26,13 +26,9 @@ public class King extends Piece {
                     continue;
                 }
                 result.add(new CoordinatesShift(horizontalShift, verticalShift));
-
             }
-
-
         }
         return result;
-
     }
 
     @Override
