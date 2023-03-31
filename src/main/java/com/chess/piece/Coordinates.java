@@ -1,6 +1,7 @@
-package com.chess.entity;
+package com.chess.piece;
 
-import com.chess.entity.piece.CoordinatesShift;
+import com.chess.coordinate.CoordinatesShift;
+import com.chess.enums.Horizontal;
 
 public class Coordinates {
     public final Horizontal horizontal;
@@ -18,8 +19,8 @@ public class Coordinates {
     public boolean canShift(CoordinatesShift coordinatesShift) {
         int h = horizontal.ordinal() + coordinatesShift.horizontalShift;
         int v = vertical + coordinatesShift.verticalShift;
-        if ((v < 0) || (v > 8)) return false;
-        return (h >= 0) && (h <= 8);
+        if ((h < 0) || (h > 7)) return false;// 0-7 weil Enum
+        return (v >= 1) && (v <= 8);// 1-8
     }
 
 
